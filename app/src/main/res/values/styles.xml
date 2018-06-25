@@ -17,7 +17,7 @@
     <style name="CalcButton" parent="Widget.AppCompat.Button">
         <item name="android:minWidth">0dp</item>
         <item name="android:minHeight">0dp</item>
-        <item name="android:background">@android:color/transparent</item>
+        <item name="android:background">?selectableItemBackgroundBorderless</item>
     </style>
 
 </resources>
