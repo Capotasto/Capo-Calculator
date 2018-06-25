@@ -33,6 +33,7 @@ build/
 *.iml
 !**/testData/**/*.iml
 .idea/
+!.idea/codeStyleSettings.xml
 # https://github.com/github/gitignore/blob/master/Android.gitignore
 # Built application files
 *.apk
