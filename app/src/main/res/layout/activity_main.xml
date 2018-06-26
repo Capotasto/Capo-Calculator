@@ -16,22 +16,25 @@
         <TextView
             android:id="@+id/textView2"
             android:text="100 * 12 * 45"
-            android:layout_width="wrap_content"
+            android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginEnd="8dp"
-            android:layout_marginTop="54dp"
+            android:layout_marginEnd="@dimen/element_spacing_normal"
+            android:layout_marginTop="@dimen/view_size_large"
             android:textColor="@color/White"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guide_right"
+            app:layout_constraintStart_toStartOf="@+id/guide_left"
+            android:layout_marginStart="8dp"
+            android:textAlignment="viewEnd"
             />
 
         <TextView
             android:id="@+id/result_text"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
-            android:layout_marginTop="24dp"
-            android:layout_marginEnd="8dp"
-            android:layout_marginStart="8dp"
+            android:layout_marginTop="@dimen/element_spacing_xlarge"
+            android:layout_marginEnd="@dimen/element_spacing_normal"
+            android:layout_marginStart="@dimen/element_spacing_normal"
             android:textColor="@color/White"
             android:text="5,760,000"
             android:textSize="36sp"
@@ -45,20 +48,20 @@
             android:id="@+id/border"
             android:layout_width="0dp"
             android:layout_height="1dp"
+            android:layout_marginEnd="@dimen/element_spacing_normal"
+            android:layout_marginTop="@dimen/element_spacing_xxlarge"
             android:background="@color/White"
-            android:layout_marginEnd="8dp"
             app:layout_constraintStart_toStartOf="@+id/guide_left"
             app:layout_constraintEnd_toStartOf="@+id/guide_right"
             app:layout_constraintTop_toBottomOf="@+id/result_text"
-            android:layout_marginTop="35dp"
             />
 
         <ImageButton
+            android:id="@+id/btn_7"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/n_7"
             style="@style/CalcButton"
-            android:id="@+id/btn_7"
             app:layout_constraintStart_toEndOf="@+id/guide_left"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/btn_8"
@@ -67,11 +70,11 @@
             />
 
         <ImageButton
+            android:id="@+id/btn_5"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/n_5"
             style="@style/CalcButton"
-            android:id="@+id/btn_5"
             app:layout_constraintStart_toEndOf="@+id/btn_4"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/btn_6"
@@ -80,11 +83,11 @@
             />
 
         <ImageButton
+            android:id="@+id/btn_c"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/c"
             style="@style/CalcButton"
-            android:id="@+id/btn_c"
             app:layout_constraintStart_toEndOf="@+id/guide_left"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/bracket_open"
@@ -94,11 +97,11 @@
             />
 
         <ImageButton
+            android:id="@+id/btn_2"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/n_2"
             style="@style/CalcButton"
-            android:id="@+id/btn_2"
             app:layout_constraintStart_toEndOf="@+id/btn_1"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/btn_3"
@@ -107,11 +110,11 @@
             />
 
         <ImageButton
+            android:id="@+id/btn_00"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/n_00"
             style="@style/CalcButton"
-            android:id="@+id/btn_00"
             app:layout_constraintStart_toStartOf="@+id/guide_left"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/btn_0"
@@ -120,11 +123,11 @@
             />
 
         <ImageButton
+            android:id="@+id/bracket_open"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/brachet_open"
             style="@style/CalcButton"
-            android:id="@+id/bracket_open"
             app:layout_constraintStart_toEndOf="@+id/btn_c"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/bracket_close"
@@ -134,11 +137,11 @@
             />
 
         <ImageButton
+            android:id="@+id/btn_8"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/n_8"
             style="@style/CalcButton"
-            android:id="@+id/btn_8"
             app:layout_constraintStart_toEndOf="@+id/btn_7"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/btn_9"
@@ -147,11 +150,11 @@
             />
 
         <ImageButton
+            android:id="@+id/btn_4"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/n_4"
             style="@style/CalcButton"
-            android:id="@+id/btn_4"
             app:layout_constraintStart_toEndOf="@+id/guide_left"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/btn_5"
@@ -160,11 +163,11 @@
             />
 
         <ImageButton
+            android:id="@+id/btn_0"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/n_0"
             style="@style/CalcButton"
-            android:id="@+id/btn_0"
             app:layout_constraintStart_toEndOf="@+id/btn_00"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/btn_dot"
@@ -173,11 +176,11 @@
             />
 
         <ImageButton
+            android:id="@+id/btn_dot"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/dot"
             style="@style/CalcButton"
-            android:id="@+id/btn_dot"
             app:layout_constraintStart_toEndOf="@+id/btn_0"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/equal"
@@ -186,11 +189,11 @@
             />
 
         <ImageButton
+            android:id="@+id/devide"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/divide"
             style="@style/CalcButton"
-            android:id="@+id/devide"
             app:layout_constraintStart_toEndOf="@+id/bracket_close"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/guide_right"
@@ -200,11 +203,11 @@
             />
 
         <ImageButton
+            android:id="@+id/multiply"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/multiply"
             style="@style/CalcButton"
-            android:id="@+id/multiply"
             app:layout_constraintStart_toEndOf="@+id/btn_9"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/guide_right"
@@ -213,11 +216,11 @@
             />
 
         <ImageButton
+            android:id="@+id/btn_6"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/n_6"
             style="@style/CalcButton"
-            android:id="@+id/btn_6"
             app:layout_constraintStart_toEndOf="@+id/btn_5"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/minus"
@@ -226,11 +229,11 @@
             />
 
         <ImageButton
+            android:id="@+id/plus"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/plus"
             style="@style/CalcButton"
-            android:id="@+id/plus"
             app:layout_constraintStart_toEndOf="@+id/btn_3"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/guide_right"
@@ -239,11 +242,11 @@
             />
 
         <ImageButton
+            android:id="@+id/equal"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/equal"
             style="@style/CalcButton"
-            android:id="@+id/equal"
             app:layout_constraintStart_toEndOf="@+id/btn_dot"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/guide_right"
@@ -252,11 +255,11 @@
             />
 
         <ImageButton
+            android:id="@+id/bracket_close"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/bracket_close"
             style="@style/CalcButton"
-            android:id="@+id/bracket_close"
             app:layout_constraintStart_toEndOf="@+id/bracket_open"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/devide"
@@ -266,11 +269,11 @@
             />
 
         <ImageButton
+            android:id="@+id/btn_9"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/n_9"
             style="@style/CalcButton"
-            android:id="@+id/btn_9"
             app:layout_constraintStart_toEndOf="@+id/btn_8"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/multiply"
@@ -279,11 +282,11 @@
             />
 
         <ImageButton
+            android:id="@+id/btn_1"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/n_1"
             style="@style/CalcButton"
-            android:id="@+id/btn_1"
             app:layout_constraintStart_toEndOf="@+id/guide_left"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/btn_2"
@@ -292,11 +295,11 @@
             />
 
         <ImageButton
+            android:id="@+id/minus"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/minus"
             style="@style/CalcButton"
-            android:id="@+id/minus"
             app:layout_constraintStart_toEndOf="@+id/btn_6"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/guide_right"
@@ -305,11 +308,11 @@
             />
 
         <ImageButton
+            android:id="@+id/btn_3"
             android:layout_width="0dp"
             android:layout_height="0dp"
             android:src="@drawable/n_3"
             style="@style/CalcButton"
-            android:id="@+id/btn_3"
             app:layout_constraintStart_toEndOf="@+id/btn_2"
             app:layout_constraintHorizontal_bias="0.5"
             app:layout_constraintEnd_toStartOf="@+id/plus"
