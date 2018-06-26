@@ -4,7 +4,7 @@ A simple, easy and ligth file management app for Android
 
 ## Screen Shot
 
-<!--|![TOP](https://raw.githubusercontent.com/Capotasto/File-Explorer-Android/images/images/device-2018-06-16-112842.png "")|![TOP](https://raw.githubusercontent.com/Capotasto/File-Explorer-Android/images/images/device-2018-06-16-112853.png "")|![TOP](https://raw.githubusercontent.com/Capotasto/File-Explorer-Android/images/images/device-2018-06-16-112656.png "")|-->
+https://raw.githubusercontent.com/Capotasto/Capo-Calculator/images/images/screen-shot.png
 
 ## Tech Note
 - Kotlin
