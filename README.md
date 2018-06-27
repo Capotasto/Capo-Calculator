@@ -14,6 +14,10 @@ A simple, easy and ligth file management app for Android
 
 ## Third Party Library
 
+## Designed by
+- Author: [Richard](https://dribbble.com/Fecony)
+- Work: [Daily 004](https://dribbble.com/shots/4725810-Calculator-Daily-004)
+
 ## Authors
 
 * **Norio Egi** - *Initial work* - [Capotasto](https://github.com/Capotasto)
