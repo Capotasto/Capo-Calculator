@@ -5,27 +5,37 @@
     xmlns:app="http://schemas.android.com/apk/res-auto"
     >
 
+    <data>
+
+        <variable
+            name="viewModel"
+            type="com.funckyhacker.capocalc.view.MainViewModel"
+            />
+    </data>
+
     <android.support.constraint.ConstraintLayout
         android:layout_width="match_parent"
         android:layout_height="match_parent"
         android:background="@drawable/gradation"
         android:fitsSystemWindows="false"
-        tools:context=".MainActivity"
+        tools:context=".view.MainActivity"
         >
 
         <TextView
             android:id="@+id/textView2"
-            android:text="100 * 12 * 45"
             android:layout_width="0dp"
             android:layout_height="wrap_content"
             android:layout_marginEnd="@dimen/element_spacing_normal"
             android:layout_marginTop="@dimen/view_size_large"
+            android:layout_marginStart="8dp"
+            android:text="@{viewModel.detail}"
             android:textColor="@color/White"
+            android:textAlignment="viewEnd"
+            android:textSize="@dimen/text_size_small"
             app:layout_constraintTop_toTopOf="parent"
             app:layout_constraintEnd_toStartOf="@+id/guide_right"
             app:layout_constraintStart_toStartOf="@+id/guide_left"
-            android:layout_marginStart="8dp"
-            android:textAlignment="viewEnd"
+            tools:text="0"
             />
 
         <TextView
@@ -36,7 +46,7 @@
             android:layout_marginEnd="@dimen/element_spacing_normal"
             android:layout_marginStart="@dimen/element_spacing_normal"
             android:textColor="@color/White"
-            android:text="5,760,000"
+            android:text="@{viewModel.sum}"
             android:textSize="36sp"
             android:textAlignment="viewEnd"
             app:layout_constraintEnd_toStartOf="@+id/guide_right"
@@ -67,6 +77,7 @@
             app:layout_constraintEnd_toStartOf="@+id/btn_8"
             app:layout_constraintTop_toBottomOf="@+id/btn_c"
             app:layout_constraintBottom_toTopOf="@+id/btn_4"
+            android:onClick="@{() -> viewModel.onClick7()}"
             />
 
         <ImageButton
@@ -80,6 +91,7 @@
             app:layout_constraintEnd_toStartOf="@+id/btn_6"
             app:layout_constraintTop_toBottomOf="@+id/btn_8"
             app:layout_constraintBottom_toTopOf="@+id/btn_2"
+            android:onClick="@{() -> viewModel.onClick5()}"
             />
 
         <ImageButton
@@ -94,6 +106,7 @@
             app:layout_constraintTop_toBottomOf="@+id/border"
             android:layout_marginTop="32dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_7"
+            android:onClick="@{() -> viewModel.onClickC()}"
             />
 
         <ImageButton
@@ -107,6 +120,7 @@
             app:layout_constraintEnd_toStartOf="@+id/btn_3"
             app:layout_constraintTop_toBottomOf="@+id/btn_5"
             app:layout_constraintBottom_toTopOf="@+id/btn_0"
+            android:onClick="@{() -> viewModel.onClick2()}"
             />
 
         <ImageButton
@@ -120,6 +134,7 @@
             app:layout_constraintEnd_toStartOf="@+id/btn_0"
             app:layout_constraintTop_toBottomOf="@+id/btn_1"
             app:layout_constraintBottom_toTopOf="@+id/guide_bottom"
+            android:onClick="@{() -> viewModel.onClick00()}"
             />
 
         <ImageButton
@@ -134,6 +149,7 @@
             app:layout_constraintTop_toBottomOf="@+id/border"
             android:layout_marginTop="32dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_8"
+            android:onClick="@{() -> viewModel.onClickBracketOpen()}"
             />
 
         <ImageButton
@@ -147,6 +163,7 @@
             app:layout_constraintEnd_toStartOf="@+id/btn_9"
             app:layout_constraintTop_toBottomOf="@+id/bracket_open"
             app:layout_constraintBottom_toTopOf="@+id/btn_5"
+            android:onClick="@{() -> viewModel.onClick8()}"
             />
 
         <ImageButton
@@ -160,6 +177,7 @@
             app:layout_constraintEnd_toStartOf="@+id/btn_5"
             app:layout_constraintTop_toBottomOf="@+id/btn_7"
             app:layout_constraintBottom_toTopOf="@+id/btn_1"
+            android:onClick="@{() -> viewModel.onClick4()}"
             />
 
         <ImageButton
@@ -173,6 +191,7 @@
             app:layout_constraintEnd_toStartOf="@+id/btn_dot"
             app:layout_constraintTop_toBottomOf="@+id/btn_2"
             app:layout_constraintBottom_toTopOf="@+id/guide_bottom"
+            android:onClick="@{() -> viewModel.onClick0()}"
             />
 
         <ImageButton
@@ -186,6 +205,7 @@
             app:layout_constraintEnd_toStartOf="@+id/equal"
             app:layout_constraintTop_toBottomOf="@+id/btn_3"
             app:layout_constraintBottom_toTopOf="@+id/guide_bottom"
+            android:onClick="@{() -> viewModel.onClickDot()}"
             />
 
         <ImageButton
@@ -200,6 +220,7 @@
             android:layout_marginTop="32dp"
             app:layout_constraintTop_toBottomOf="@+id/border"
             app:layout_constraintBottom_toTopOf="@+id/multiply"
+            android:onClick="@{() -> viewModel.onClickDivide()}"
             />
 
         <ImageButton
@@ -213,6 +234,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guide_right"
             app:layout_constraintTop_toBottomOf="@+id/devide"
             app:layout_constraintBottom_toTopOf="@+id/minus"
+            android:onClick="@{() -> viewModel.onClickMultiply()}"
             />
 
         <ImageButton
@@ -226,6 +248,7 @@
             app:layout_constraintEnd_toStartOf="@+id/minus"
             app:layout_constraintTop_toBottomOf="@+id/btn_9"
             app:layout_constraintBottom_toTopOf="@+id/btn_3"
+            android:onClick="@{() -> viewModel.onClick6()}"
             />
 
         <ImageButton
@@ -239,6 +262,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guide_right"
             app:layout_constraintTop_toBottomOf="@+id/minus"
             app:layout_constraintBottom_toTopOf="@+id/equal"
+            android:onClick="@{() -> viewModel.onClickPlus()}"
             />
 
         <ImageButton
@@ -252,6 +276,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guide_right"
             app:layout_constraintTop_toBottomOf="@+id/plus"
             app:layout_constraintBottom_toTopOf="@+id/guide_bottom"
+            android:onClick="@{() -> viewModel.onClickEqual()}"
             />
 
         <ImageButton
@@ -266,6 +291,7 @@
             app:layout_constraintTop_toBottomOf="@+id/border"
             android:layout_marginTop="32dp"
             app:layout_constraintBottom_toTopOf="@+id/btn_9"
+            android:onClick="@{() -> viewModel.onClickBracketClose()}"
             />
 
         <ImageButton
@@ -279,6 +305,7 @@
             app:layout_constraintEnd_toStartOf="@+id/multiply"
             app:layout_constraintTop_toBottomOf="@+id/bracket_close"
             app:layout_constraintBottom_toTopOf="@+id/btn_6"
+            android:onClick="@{() -> viewModel.onClick9()}"
             />
 
         <ImageButton
@@ -292,6 +319,7 @@
             app:layout_constraintEnd_toStartOf="@+id/btn_2"
             app:layout_constraintTop_toBottomOf="@+id/btn_4"
             app:layout_constraintBottom_toTopOf="@+id/btn_00"
+            android:onClick="@{() -> viewModel.onClick1()}"
             />
 
         <ImageButton
@@ -305,6 +333,7 @@
             app:layout_constraintEnd_toStartOf="@+id/guide_right"
             app:layout_constraintTop_toBottomOf="@+id/multiply"
             app:layout_constraintBottom_toTopOf="@+id/plus"
+            android:onClick="@{() -> viewModel.onClickMinus()}"
             />
 
         <ImageButton
@@ -318,6 +347,7 @@
             app:layout_constraintEnd_toStartOf="@+id/plus"
             app:layout_constraintTop_toBottomOf="@+id/btn_6"
             app:layout_constraintBottom_toTopOf="@+id/btn_dot"
+            android:onClick="@{() -> viewModel.onClick3()}"
             />
 
         <android.support.constraint.Guideline
