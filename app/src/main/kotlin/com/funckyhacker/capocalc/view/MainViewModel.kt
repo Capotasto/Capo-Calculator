@@ -1,8 +1,11 @@
 package com.funckyhacker.capocalc.view
 
+import android.arch.lifecycle.Lifecycle
 import android.arch.lifecycle.LifecycleObserver
+import android.arch.lifecycle.OnLifecycleEvent
 import android.arch.lifecycle.ViewModel
 import android.databinding.ObservableField
+import com.funckyhacker.capocalc.utils.Rpn
 import timber.log.Timber
 
 class MainViewModel : ViewModel(), LifecycleObserver {
@@ -10,6 +13,17 @@ class MainViewModel : ViewModel(), LifecycleObserver {
     var detail = ObservableField<String>("")
 
     var sum = ObservableField<String>("0")
+
+    enum class CalcMode {
+        ADD, SUBTRACT, MULTIPLY, DIVIDE, NONE
+    }
+
+    var mode = CalcMode.NONE
+
+    @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
+    fun onCreate() {
+        Timber.i("onCreate")
+    }
 
     override fun onCleared() {
         Timber.i("onCleared")
@@ -36,8 +50,31 @@ class MainViewModel : ViewModel(), LifecycleObserver {
 
     fun onClickEqual() {
         Timber.i("onClick =")
-        //detail.set(detail.get() + "=")
-        // doCalculate();
+        doCalculate()
+    }
+
+    private fun doCalculate() {
+        if(validateBrackets()) {
+            val rpn = Rpn.getRpn(detail.get() ?: "")
+            sum.set(Rpn.calc(rpn))
+        } else {
+            //show error msg
+        }
+    }
+
+    private fun validateBrackets(): Boolean {
+        var countOpenBracket = 0
+        var countCloseBracket = 0
+
+        detail.get()?.forEach {
+            if ('(' == it){
+                countOpenBracket++
+            }
+            if (')' == it){
+                countCloseBracket++
+            }
+        }
+        return countOpenBracket == countCloseBracket
     }
 
 
@@ -62,6 +99,7 @@ class MainViewModel : ViewModel(), LifecycleObserver {
     fun onClickPlus() {
         Timber.i("onClick +")
         detail.set(detail.get() + "+")
+        mode = CalcMode.ADD
     }
 
     fun onClick4() {
@@ -112,8 +150,10 @@ class MainViewModel : ViewModel(), LifecycleObserver {
 
     fun onClickC() {
         Timber.i("onClick C")
-        val current = detail.get()
-        detail.set(current?.substring(0, current.length -1) ?: "")
+        val current = detail.get() ?: ""
+        if(current.isNotEmpty()) {
+            detail.set(current.substring(0, current.length - 1))
+        }
     }
 
 
@@ -132,5 +172,6 @@ class MainViewModel : ViewModel(), LifecycleObserver {
     fun onClickDivide() {
         Timber.i("onClick /")
         detail.set(detail.get() + "/")
+        mode = CalcMode.DIVIDE
     }
 }
