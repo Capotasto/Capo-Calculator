@@ -1,6 +1,7 @@
 package com.funckyhacker.capocalc.utils
 
 import android.support.annotation.NonNull
+import java.math.BigDecimal
 import java.util.*
 
 class Rpn {
@@ -22,6 +23,11 @@ class Rpn {
             formula.forEach {
                 when(it){
                     '+', '-' -> {
+                        if(tempNumber.isEmpty()) {
+                            tempNumber = it.toString()
+                            return@forEach
+                        }
+
                         if (tempNumber != "") {
                             resultDeque.addFirst(tempNumber)
                             tempNumber = ""
@@ -64,7 +70,7 @@ class Rpn {
                             resultDeque.addFirst(workDeque.removeFirst().toString())
                         }
                     }
-                    '0','1','2','3','4','5','6','7','8','9' -> {
+                    '0','1','2','3','4','5','6','7','8','9', '.' -> {
                         tempNumber += it
                     }
                 }
@@ -85,34 +91,34 @@ class Rpn {
         fun calc(rpnDeque: Deque<String>): String{
             val deque = ArrayDeque<String>()
 
-            var x: Int
-            var y: Int
+            var x: Double
+            var y: Double
             val list = rpnDeque.toList().reversed()
 
             list.forEach {
                 when(it){
                     "+" -> {
-                        x = deque.removeFirst().toString().toInt()
-                        y = deque.removeFirst().toString().toInt()
-                        deque.addFirst((x + y).toString())
+                        x = deque.removeFirst().toString().toDouble()
+                        y = deque.removeFirst().toString().toDouble()
+                        deque.addFirst(format(x + y))
                     }
                     "-" -> {
-                        x = deque.removeFirst().toString().toInt()
-                        y = deque.removeFirst().toString().toInt()
-                        deque.addFirst((y - x).toString())
+                        x = deque.removeFirst().toString().toDouble()
+                        y = deque.removeFirst().toString().toDouble()
+                        deque.addFirst(format(y - x))
                     }
                     "*" -> {
-                        x = deque.removeFirst().toString().toInt()
-                        y = deque.removeFirst().toString().toInt()
-                        deque.addFirst((x * y).toString())
+                        x = deque.removeFirst().toString().toDouble()
+                        y = deque.removeFirst().toString().toDouble()
+                        deque.addFirst(format(x * y))
                     }
                     "/" -> {
-                        x = deque.removeFirst().toString().toInt()
-                        y = deque.removeFirst().toString().toInt()
-                        if (y == 0) {
+                        x = deque.removeFirst().toString().toDouble()
+                        y = deque.removeFirst().toString().toDouble()
+                        if (y == 0.0) {
                             return "Error"
                         }
-                        deque.addFirst((x / y).toString())
+                        deque.addFirst(format(x / y))
                     }
                     else -> {
                         deque.addFirst(it.toString())
@@ -120,6 +126,14 @@ class Rpn {
                 }
             }
             return  deque.removeFirst().toString()
+        }
+
+        private fun format(number: Double): String {
+            val bigDecimal = BigDecimal(number)
+            if (bigDecimal.stripTrailingZeros().scale() <= 0) {
+                return bigDecimal.stripTrailingZeros().toString()
+            }
+            return number.toString()
         }
     }
 }
