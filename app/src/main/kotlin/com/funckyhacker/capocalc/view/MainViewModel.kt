@@ -14,11 +14,7 @@ class MainViewModel : ViewModel(), LifecycleObserver {
 
     var sum = ObservableField<String>("0")
 
-    enum class CalcMode {
-        ADD, SUBTRACT, MULTIPLY, DIVIDE, NONE
-    }
-
-    var mode = CalcMode.NONE
+    var error = ObservableField<String>("")
 
     @OnLifecycleEvent(Lifecycle.Event.ON_CREATE)
     fun onCreate() {
@@ -54,11 +50,12 @@ class MainViewModel : ViewModel(), LifecycleObserver {
     }
 
     private fun doCalculate() {
-        if(validateBrackets()) {
+        error.set("")
+        if (validateBrackets()) {
             val rpn = Rpn.getRpn(detail.get() ?: "")
             sum.set(Rpn.calc(rpn))
         } else {
-            //show error msg
+            error.set("Unbalanced Brackets")
         }
     }
 
@@ -67,10 +64,10 @@ class MainViewModel : ViewModel(), LifecycleObserver {
         var countCloseBracket = 0
 
         detail.get()?.forEach {
-            if ('(' == it){
+            if ('(' == it) {
                 countOpenBracket++
             }
-            if (')' == it){
+            if (')' == it) {
                 countCloseBracket++
             }
         }
@@ -99,7 +96,6 @@ class MainViewModel : ViewModel(), LifecycleObserver {
     fun onClickPlus() {
         Timber.i("onClick +")
         detail.set(detail.get() + "+")
-        mode = CalcMode.ADD
     }
 
     fun onClick4() {
@@ -151,27 +147,23 @@ class MainViewModel : ViewModel(), LifecycleObserver {
     fun onClickC() {
         Timber.i("onClick C")
         val current = detail.get() ?: ""
-        if(current.isNotEmpty()) {
+        if (current.isNotEmpty()) {
             detail.set(current.substring(0, current.length - 1))
         }
     }
-
 
     fun onClickBracketOpen() {
         Timber.i("onClick (")
         detail.set(detail.get() + "(")
     }
 
-
     fun onClickBracketClose() {
         Timber.i("onClick )")
         detail.set(detail.get() + ")")
     }
 
-
     fun onClickDivide() {
         Timber.i("onClick /")
         detail.set(detail.get() + "/")
-        mode = CalcMode.DIVIDE
     }
 }
