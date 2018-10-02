@@ -20,12 +20,12 @@ class Rpn {
             val deque = ArrayDeque<Char>()
             var tempNumber = ""
 
-            formula.forEach {
+            formula.forEachIndexed { index, it ->
                 when(it){
                     '+', '-' -> {
-                        if(tempNumber.isEmpty()) {
+                        if(index == 0) {
                             tempNumber = it.toString()
-                            return@forEach
+                            return@forEachIndexed
                         }
 
                         if (tempNumber != "") {
@@ -131,7 +131,7 @@ class Rpn {
         private fun format(number: Double): String {
             val bigDecimal = BigDecimal(number)
             if (bigDecimal.stripTrailingZeros().scale() <= 0) {
-                return bigDecimal.stripTrailingZeros().toString()
+                return bigDecimal.stripTrailingZeros().toInt().toString()
             }
             return number.toString()
         }
